@@ -24,8 +24,8 @@ class LinebotController < ApplicationController
             # event.message['text']: ユーザーが入力したメッセージ
           input = event.message['text']
           
-          if input == ""
-            push = ""
+          if input == "登録"
+            push = "ログインしてね〜"
           elsif input == ""
             push = ""
           elsif input == ""
