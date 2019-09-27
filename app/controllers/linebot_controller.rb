@@ -55,4 +55,3 @@ class LinebotController < ApplicationController
   }
   end
 end
-end
