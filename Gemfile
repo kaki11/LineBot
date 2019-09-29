@@ -71,3 +71,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'line-bot-api'
 gem 'dotenv-rails'
+gem 'bootstrap-sass'
