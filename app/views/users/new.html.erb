@@ -1,19 +1,20 @@
+<%= render 'shared/header' %>
 <div class="users-new-wrapper">
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-offset-4 col-md-4 users-new-container">
         <h1 class="text-center text-white">Sign up</h1>
         <%= form_with model: @user do |f| %>
           <div class="form-group">
-            <%= f.label :name, class: 'text-white' %>
+            <%= f.label :name %>
             <%= f.text_field :name, class: 'form-control' %>
           </div>
           <div class="form-group">
-            <%= f.label :email, class: 'text-white' %>
+            <%= f.label :email %>
             <%= f.text_field :email, class: 'form-control' %>
           </div>
           
-          <%= f.submit "登録", class: 'btn-block btn-white' %>
+            <%= f.submit "登録", class: 'btn btn-outline-info' %>
         <% end %>
       </div>
     </div>

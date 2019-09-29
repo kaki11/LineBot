@@ -1,16 +1,15 @@
-
-<div class="top-hero-wrapper text-center">
-  <div class="container top-hero-container">
-    <h1 class="text-white">title</h1>
-    <h2 class="text-white">texttexttexttexttext</h2>
-    <div class="row">
-      <div class="col-md-offset-3 col-md-3">
-        <%= link_to '始める', new_user_path, class: 'btn btn-block btn-white' %>
-      </div>
-      <div class="col-md-3">
-        <%= link_to "LINEログインする", "https://access.line.me/oauth2/v2.1/authorize", response_type: "code",
-        client_id: 1626757935, redirect_uri: "https://line-botkun.herokuapp.com", state: 1111, class: 'btn btn-block btn-white' %>
-      </div>
+<div class="jumbotron">
+  <div class="top-hero-wrapper text-center p-5">
+    <div class="container top-hero-container bg-white p-5">
+      <h1>title</h1>
+      <h2 class="pb-3">texttexttexttexttext</h2>
+        <div class="center-block">
+          <%= link_to "始める", new_user_path, class: "btn btn-outline-info mb-3" %>
+        </div>
+        <div class="center-block">
+          <%= link_to "LINEログインする", "https://access.line.me/oauth2/v2.1/authorize", response_type: "code",
+          client_id: 1626757935, redirect_uri: "https://line-botkun.herokuapp.com", state: 1111, class: "btn btn-outline-success" %>
+        </div>
     </div>
   </div>
 </div>
