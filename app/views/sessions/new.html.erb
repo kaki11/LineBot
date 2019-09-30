@@ -1,2 +1,20 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<%= render 'shared/header' %>
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h1 class="text-center text-white">Sign up</h1>
+        <%= form_with scope: :session, url: login_path do |f| %>
+
+            <%= f.label :email %>
+            <%= f.text_field :email, class: 'form-control form-group' %>
+
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control form-group' %>
+
+            <%= f.submit "ログイン", class: 'btn btn-outline-danger' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
