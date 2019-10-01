@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      redirect_to root_path, success: '登録が完了しました'
+      redirect_to topics_path , success: '登録が完了しました'
     else
       flash.now[:danger] = '登録に失敗しました'
       render :new
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      redirect_to root_path, success: '編集しました'
+      redirect_to topics_path, success: '編集しました'
     else
       render :edit
     end

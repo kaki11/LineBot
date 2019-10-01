@@ -15,5 +15,12 @@
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
     <%= yield %>
+
+    <script>
+      $(function(){
+        $(".alert").fadeOut(3000);
+      });
+    </script>
+
   </body>
 </html>
