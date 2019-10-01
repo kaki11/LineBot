@@ -1,1 +1,21 @@
 <%= render 'shared/header' %>
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h1 class="text-center">add</h1>
+        <%= form_with model: @topic, url: topics_path do |f| %>
+        <%= render 'shared/error_messages' %>
+
+          <%= f.label :送信 %>
+          <%= f.text_field :receive_message, class: 'form-control form-group' %>
+
+          <%= f.label :受信 %>
+          <%= f.text_field :send_message, class: 'form-control form-group' %>
+
+          <%= f.submit "登録", class: 'btn btn-outline-info' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
