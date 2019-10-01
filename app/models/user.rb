@@ -5,4 +5,5 @@ class User < ApplicationRecord
               allow_nil: true # →　対象の値がnilの場合にバリデーションをスキップ
 
   has_secure_password
+  has_many :topics, dependent: :destroy
 end
