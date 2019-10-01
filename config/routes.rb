@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   
   resources :users
+  resources :tpics, only: [:create, :destroy]
 
   get '/index' => 'home#index'
   post '/callback' => 'linebot#callback'
