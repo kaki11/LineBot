@@ -5,7 +5,12 @@ class TopicsController < ApplicationController
   def index
     @topics = Topic.all
   end
-
+  
+  def show
+    @topic = Topic.find_by(id: params[:id])
+    @user = User.find_by(id: @topic.user_id)
+  end
+  
   def new
     @topic = Topic.new
   end
@@ -13,7 +18,7 @@ class TopicsController < ApplicationController
   def create
     @topic = current_user.topics.new(topic_params)
     if @topic.save
-      redirect_to topics_path
+      redirect_to user_path(current_user)
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new
@@ -21,9 +26,12 @@ class TopicsController < ApplicationController
   end
 
   def destroy
-    # @topic = topics.find_by(id: params[:id])
-    @topic.destroy
-      redirect_to topics_path
+    if @topic.user_id == current_user.id
+      @topic.destroy
+      redirect_to user_path(current_user)
+    else
+      flash.now[:danger] = "削除出来ません"
+    end
   end
 
   private
