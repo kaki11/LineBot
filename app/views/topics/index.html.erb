@@ -5,6 +5,7 @@
       <div class="message">
         <%= topic.send_message %> 
         <%= topic.receive_message %>
+        <%= link_to "削除", topic, method: :delete %>
       </div>
     </div>
   <% end %>
