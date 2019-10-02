@@ -25,6 +25,17 @@ class TopicsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @topic.update_attributes(topic_params)
+      redirect_to user_path(current_user), success: '編集しました'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     if @topic.user_id == current_user.id
       @topic.destroy

@@ -6,6 +6,7 @@
         <%= topic.send_message %> 
         <%= topic.receive_message %>
         <%= link_to "削除", topic, method: :delete %>
+        <%= link_to "編集", edit_topic_path(topic.id), modle: @topic %>
       </div>
     </div>
   <% end %>
