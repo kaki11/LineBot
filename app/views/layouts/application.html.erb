@@ -10,17 +10,24 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <!--<div class="alert alert-<%= key %>" role="alert"><%= value %></div> -->
-      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-    <% end %>
-    <%= yield %>
+    <div class="top-bg">
+      <div class="container p-5">
+        <div class="container top-hero-container bg-white">
+        <%= render 'shared/header' %>
+          <% flash.each do |key, value| %>
+            <!--<div class="alert alert-<%= key %>" role="alert"><%= value %></div> -->
+            <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+          <% end %>
+          <%= yield %>
 
-    <script>
-      $(function(){
-        $(".alert").fadeOut(1500);
-      });
-    </script>
+            <script>
+              $(function(){
+                $(".alert").fadeOut(3000);
+              });
+            </script>
 
+        </div>
+      </div>
+    </div>
   </body>
 </html>
