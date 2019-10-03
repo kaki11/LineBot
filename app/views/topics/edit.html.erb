@@ -1,15 +1,15 @@
-<div class="users-new-wrapper">
+<div class="wrapper">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-offset-4 col-md-4 users-new-container">
-        <h1 class="text-center">Change</h1>
+      <div class="col-md-offset-4 col-md-4">
+        <h1 class="title">Change</h1>
         <%= form_with model: @topic, url: topic_path do |f| %>
 
           <%= f.label :送信 %>
-          <%= f.text_field :send_message, class: 'form-control form-group' %>
+          <%= f.text_area :send_message, class: 'form-control form-group' %>
 
           <%= f.label :受信 %>
-          <%= f.text_field :receive_message, class: 'form-control form-group' %>
+          <%= f.text_area :receive_message, class: 'form-control form-group' %>
 
           <%= f.submit "変更", class: 'btn btn-outline-info' %>
         <% end %>

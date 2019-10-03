@@ -1,7 +1,7 @@
 <div class="container">
   <div class="line-bc">
     <%# 登録フォーム %>
-    <div class="add p-3">
+    <div class="add shadow-sm p-3 mt-5">
       <p class="">ここから登録できるよ〜</p>
       <%= form_with scope: :topic, url: topics_path do |f| %>
 
@@ -14,6 +14,7 @@
         <%= f.submit "登録！", class: 'sm-btn btn-outline-info' %>
       <% end %>
     </div>
+    <h2 class="list-title pt-5">List</h2>
 
     <% @user.topics.each do |topic| %>
       <div class="row">

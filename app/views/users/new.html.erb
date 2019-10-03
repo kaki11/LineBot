@@ -1,20 +1,20 @@
-<div class="users-new-wrapper">
+<div class="wrapper">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-offset-4 col-md-4 users-new-container">
-        <h1 class="text-center">Sign up</h1>
+      <div class="col-md-offset-4 col-md-4">
+        <h1 class="title">Sign up</h1>
         <%= form_with model: @user, url: signup_path do |f| %>
 
-          <%= f.label :name %>
+          <%= f.label :名前 %>
           <%= f.text_field :name, class: 'form-control form-group' %>
 
-          <%= f.label :email %>
+          <%= f.label :メールアドレス %>
           <%= f.text_field :email, class: 'form-control form-group' %>
 
-          <%= f.label :password %>
+          <%= f.label :パスワード %>
           <%= f.password_field :password, class: 'form-control form-group' %>
 
-          <%= f.label :password_confirmation, "Confirmation" %>
+          <%= f.label :パスワード（確認）%>
           <%= f.password_field :password_confirmation, class: 'form-control form-group' %>
 
           <%= f.submit "登録", class: 'btn btn-outline-info' %>
