@@ -7,15 +7,34 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
         <% if logged_in? %>
-          <%= link_to "一覧", user_path(current_user), class: "nav-item nav-link"%>
-          <%= link_to "登録", new_topic_path, class: "nav-item nav-link"%>
-          <%= link_to "ユーザー編集", edit_user_path(current_user), model: @user, class: "nav-item nav-link" %>
-          <%= link_to "ログアウト", logout_path, method: :delete, class: "nav-item nav-link"%>
+          <%= link_to user_path(current_user), class: "nav-item nav-link" do %>
+            一覧
+          <% end %>
+          <%= link_to new_topic_path, class: "nav-item nav-link" do %>
+            登録
+          <% end %>
+          <%= link_to edit_user_path(current_user), model: @user, class: "nav-item nav-link" do %>
+            ユーザー編集
+          <% end %>
+          <%= link_to logout_path, method: :delete, class: "nav-item nav-link" do %>
+            ログアウト
+          <% end %>
         <% else %>
-          <%= link_to "新規登録", new_user_path, class: "nav-item nav-link"%>
-          <%= link_to "ログイン", login_path, class: "nav-item nav-link"%>
+          <%= link_to new_user_path, class: "nav-item nav-link" do %>
+            新規登録
+          <% end %>
+          <%= link_to login_path, class: "nav-item nav-link" do %>
+            ログイン
+          <% end %>
         <% end %>
       </div>
     </div>
   </div>
 </nav>
+
+<%#= fa_icon("home 2x") %>
+<%#= fa_icon("plus-square-o 2x") %>
+<%#= fa_icon("user-circle 2x") %>
+<%#= fa_icon("sign-out 2x") %>
+<%#= fa_icon("user 2x") %>
+<%#= fa_icon("sign-in 2x") %>
