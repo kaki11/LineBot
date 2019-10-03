@@ -1,13 +1,28 @@
 <%= render 'shared/header' %>
 <div class="container">
-  <% @user.topics.each do |topic| %>
-    <div class="row">
-      <div class="message">
-        <%= topic.send_message %> 
-        <%= topic.receive_message %>
-        <%= link_to "削除", topic, method: :delete %>
-        <%= link_to "編集", edit_topic_path(topic.id), modle: @topic %>
+  <div class="line-bc">
+    <% @user.topics.each do |topic| %>
+      <div class="row">
+        <div class="message p-2">
+          <div class="send_message rounded-pill p-2 float-left">
+            <%= topic.send_message %>
+          </div>
+
+          <div class="receive_message rounded-pill p-2 float-left">
+            <%= topic.receive_message %>
+          </div>
+
+          <div class="option float-right ">
+            <%= link_to topic, method: :delete do %>
+              <%= fa_icon("times") %>
+            <% end %>
+            <%= link_to edit_topic_path(topic.id), modle: @topic do %>
+              <%= fa_icon("edit") %>
+            <% end %>
+          </div>
+
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
