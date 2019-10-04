@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :topics
 
-  get '/index' => 'home#index'
+  get '/show' => 'home#show'
+  post '/line' => 'home#create'
   post '/callback' => 'linebot#callback'
 end
