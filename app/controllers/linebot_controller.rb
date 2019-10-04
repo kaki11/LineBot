@@ -15,7 +15,6 @@ class LinebotController < ApplicationController
     events = client.parse_events_from(body)
     
     events.each { |event|
-      userId = event['source']['userId'] #userId取得
 
       case event
         # メッセージが送信された場合の対応
@@ -52,8 +51,8 @@ class LinebotController < ApplicationController
   private
   def client
     @client ||= Line::Bot::Client.new { |config|
-      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+    config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+    config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
   }
   end
 end

@@ -2,6 +2,11 @@
   <div class="line-bc">
     <%# 登録フォーム %>
     <div class="add shadow p-3 mt-5">
+
+      <p class="">最初にLineと連携させてね！</p>
+        <%= link_to "LINE", "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1626757935&redirect_uri=https://line-botkun.herokuapp.com/index&state=#{SecureRandom.hex(10)}&scope=profile%20openid",
+         class: "btn btn-outline-success" %>
+
       <p class="">ここから登録できるよ〜</p>
       <%= form_with scope: :topic, url: topics_path do |f| %>
 
