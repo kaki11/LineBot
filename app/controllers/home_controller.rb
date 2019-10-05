@@ -3,28 +3,18 @@ class HomeController < ApplicationController
   end
 
   def show
-    uri = URI.parse("https://api.line.me/oauth2/v2.1/token")
-    request = Net::HTTP::Post.new(uri)
-    request.content_type = "application/x-www-form-urlencoded"
-    request.set_form_data(
-      "grant_type" => "authorization_code",
-      "code" => params[:code],
-      "redirect_uri" => "https://line-botkun.herokuapp.com/show",
-      "client_id" => "1626757935",
-      "client_secret" => ENV["LINE_CHANNEL_SECRET"]
-    )
-
-    req_options = {
-      use_ssl: uri.scheme == "https",
-    }
-
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
+    uri = URI.parse('https://api.line.me/oauth2/v2.1/token')
+    res = Net::HTTP.post_form(uri, { 
+      client_id: "1626757935",
+      client_secret: "03e565abb28e0fbbd5fe695eb1d2cca0",
+      code: params[:code],
+      grant_type: "authorization_code",
+      redirect_uri: "http://localhost:3000/show"
+    })
+    puts res.body
   end
 
   def create
-
   end
 
 end
