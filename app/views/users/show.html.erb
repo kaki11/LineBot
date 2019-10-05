@@ -2,25 +2,28 @@
   <div class="line-bc">
     <%# 登録フォーム %>
     <div class="add shadow p-3 mt-5">
-
+    <% if current_user.line_user.present? %>
       <p class="">最初にLineと連携させてね！</p>
         <%= link_to "LINE", "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1626757935&redirect_uri=https://line-botkun.herokuapp.com/show&state=#{SecureRandom.hex(10)}&scope=profile%20openid",
-         class: "btn btn-outline-success" %>
+         class: "btn btn-outline-success mb-3" %>
 
+    <% else %>
       <p class="">ここから登録できるよ〜</p>
       <%= form_with scope: :topic, url: topics_path do |f| %>
 
-        <%= f.label :送信 , class: 'rounded-pill p-2 send-label'%>
-        <%= f.text_field :send_message, class: '' %>
+      <%= f.label :送信 , class: 'rounded-pill p-2 send-label'%>
+      <%= f.text_field :send_message, class: '' %>
 
-        <%= f.label :受信 , class: 'rounded-pill p-2 receive-label'%>
-        <%= f.text_field :receive_message, class: '' %>
+      <%= f.label :受信 , class: 'rounded-pill p-2 receive-label'%>
+      <%= f.text_field :receive_message, class: '' %>
 
-        <%= f.submit "登録！", class: 'sm-btn btn-outline-info' %>
+      <%= f.submit "登録！", class: 'sm-btn btn-outline-info' %>
       <% end %>
-    </div>
-    <h2 class="list-title pt-5">List</h2>
 
+    <% end %>
+    </div>
+
+    <h2 class="list-title pt-5">List</h2>
     <% @user.topics.each do |topic| %>
       <div class="row">
         <div class="message p-2">

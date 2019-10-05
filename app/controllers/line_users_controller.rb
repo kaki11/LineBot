@@ -20,22 +20,19 @@ class LineUsersController < ApplicationController
     headers = { Authorization: "Bearer #{token}" }
     response = http.get(uri2.path, headers)
 
-    #ユーザーとline_uidを紐ずける
     user_info = JSON.parse(response.body)
     user_line_id = user_info["userId"]
     user_line_name = user_info["displayName"]
-    puts user_line_id
-    puts user_line_name
 
-  end
-
-  def create
-    
-  end
-
-  private
-    def line_params
-      params.require(:line_user).permit(:line_id)
+    #ユーザーとline_uidを紐ずける
+    unless LineUser.find_by(line_id: user_line_id).present?
+      LineUser.create!(user_id: current_user.id, line_id: user_line_id)
+    else
+      redirect_to user_path(current_user), info: 'もう連携済みだよ！'
     end
+
+
+  end
+
 
 end

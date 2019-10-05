@@ -10,6 +10,5 @@ Rails.application.routes.draw do
   resources :topics
 
   get '/show' => 'line_users#index'
-  post '/line' => 'line_users#create'
   post '/callback' => 'linebot#callback'
 end
