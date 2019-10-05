@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :topics
 
-  get '/show' => 'home#show'
-  post '/line' => 'home#create'
+  get '/show' => 'line_users#index'
+  post '/line' => 'line_users#create'
   post '/callback' => 'linebot#callback'
 end
