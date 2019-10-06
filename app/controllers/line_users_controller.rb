@@ -1,7 +1,7 @@
 class LineUsersController < ApplicationController
   
   def index
-    #アクセストークンの取得
+     #アクセストークンの取得
     uri = URI.parse('https://api.line.me/oauth2/v2.1/token')
     res = Net::HTTP.post_form(uri, { 
       client_id: "1626757935",
@@ -25,14 +25,11 @@ class LineUsersController < ApplicationController
     user_line_name = user_info["displayName"]
 
     #ユーザーとline_uidを紐ずける
-    unless LineUser.find_by(line_id: user_line_id).present?
+    if LineUser.find_by(line_id: user_line_id).nil?
       LineUser.create!(user_id: current_user.id, line_id: user_line_id)
     else
       redirect_to user_path(current_user), info: 'もう連携済みだよ！'
     end
-
-
   end
-
 
 end

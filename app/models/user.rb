@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_secure_password
   has_many :topics, dependent: :destroy
-  belongs_to :line_user
+  has_one :line_user
 end
