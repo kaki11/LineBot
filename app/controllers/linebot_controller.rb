@@ -15,7 +15,8 @@ class LinebotController < ApplicationController
     events = client.parse_events_from(body)
     
     events.each { |event|
-
+      #userId取得
+    userId = event['source']['userId']
       case event
         # メッセージが送信された場合の対応
       when Line::Bot::Event::Message
@@ -24,19 +25,29 @@ class LinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Text
             # event.message['text']: ユーザーが入力したメッセージ
           input = event.message['text']
+          user = LineUser.find_by(line_id: userId)
+          topics = user.user.topics
+          #送られてきたメッセージをユーザーtopicsから検索
+          topic = topics.find_by(send_message: input)
           
-          if input == "登録"
-            push = "ログインしてね〜\n" + "https://line-botkun.herokuapp.com/"
-          elsif input == "a"
-            push = userId
-          elsif input == ""
-            push = ""
+          if user.nil? || User.find_by(id: params[:id]).nil?
+            push = "まだ連携が終わってないみたい＞＜\nログインして連携させてね！\nhttp://localhost:3000"
+
+          elsif input == "とうろく"
+            push = "http://localhost:3000" 
+    
+          elsif topic.nil?
+            push = input + "？\n『とうろく』で登録画面に飛べるよ！"
+          
+          elsif input == topic.send_message
+            receive_message = topics.find_by(send_message: input).receive_message
+            push = receive_message
+
           else
-            push = input + "??\n"
-            
+            push = "もう一度入力してね！"
           end
-       
         end
+
           #送信するメッセージを定義
         message = {
           type: 'text',
