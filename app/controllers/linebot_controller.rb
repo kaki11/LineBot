@@ -30,7 +30,7 @@ class LinebotController < ApplicationController
           #送られてきたメッセージをユーザーtopicsから検索
           topic = topics.find_by(send_message: input)
           
-          if user.nil? || User.find_by(id: params[:id]).nil?
+          if user.nil?
             push = "まだ連携が終わってないみたい＞＜\nログインして連携させてね！\nhttp://localhost:3000"
 
           elsif input == "とうろく"
@@ -62,8 +62,8 @@ class LinebotController < ApplicationController
   private
   def client
     @client ||= Line::Bot::Client.new { |config|
-    config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-    config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-  }
+      config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+      config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+      }
   end
 end

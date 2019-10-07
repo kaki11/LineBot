@@ -28,7 +28,7 @@ class LineUsersController < ApplicationController
     if LineUser.find_by(line_id: user_line_id).nil?
       LineUser.create!(user_id: current_user.id, line_id: user_line_id)
     else
-      redirect_to user_path(current_user), info: 'もう連携済みだよ！'
+      redirect_to user_path(current_user), info: 'もう連携済みだよ！登録している別のアカウントがあるかも！'
     end
   end
 
