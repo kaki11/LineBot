@@ -11,8 +11,8 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = current_user.topics.new(topic_params)
-    if @topic.save
+    topic = current_user.topics.new(topic_params)
+    if topic.save
       redirect_to user_path(current_user)
     else
       flash.now[:danger] = "登録に失敗しました"

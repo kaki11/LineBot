@@ -5,11 +5,11 @@
         <h1 class="title">login</h1>
         <%= form_with scope: :session, url: login_path do |f| %>
 
-            <%= f.label :メールアドレス %>
-            <%= f.text_field :email, class: 'form-control form-group' %>
+            <%= f.label :メールアドレス, for: 'email' %>
+            <%= f.text_field :email, class: 'form-control form-group', id: 'email' %>
 
-            <%= f.label :パスワード %>
-            <%= f.password_field :password, class: 'form-control form-group' %>
+            <%= f.label :パスワード, for: 'password' %>
+            <%= f.password_field :password, class: 'form-control form-group', id: 'password'%>
 
             <%= f.submit "ログイン", class: 'btn btn-outline-danger' %>
         <% end %>

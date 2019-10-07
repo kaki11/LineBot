@@ -5,11 +5,11 @@
         <h1 class="title">Change</h1>
         <%= form_with model: @topic, url: topic_path do |f| %>
 
-          <%= f.label :送信 %>
-          <%= f.text_area :send_message, class: 'form-control form-group' %>
+          <%= f.label :送信, for: 'send' %>
+          <%= f.text_area :send_message, class: 'form-control form-group', id: 'send'%>
 
-          <%= f.label :受信 %>
-          <%= f.text_area :receive_message, class: 'form-control form-group' %>
+          <%= f.label :受信, for: 'receive' %>
+          <%= f.text_area :receive_message, class: 'form-control form-group', id: 'receive' %>
 
           <%= f.submit "変更", class: 'btn btn-outline-info' %>
         <% end %>

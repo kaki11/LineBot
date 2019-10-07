@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
+    # 一度取得していればその値を検索しないで使う
     @current_user ||= User.find_by(id: session[:user_id])
   end
 
