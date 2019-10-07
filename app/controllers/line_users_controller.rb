@@ -1,5 +1,5 @@
 class LineUsersController < ApplicationController
-  
+
   def index
      #アクセストークンの取得
     uri = URI.parse('https://api.line.me/oauth2/v2.1/token')
@@ -8,7 +8,7 @@ class LineUsersController < ApplicationController
       client_secret: "03e565abb28e0fbbd5fe695eb1d2cca0",
       code: params[:code],
       grant_type: "authorization_code",
-      redirect_uri: "http://localhost:3000/show"
+      redirect_uri: "https://line-botkun.herokuapp.com/show"
     })
     result = JSON.parse(res.body)
     token = result["access_token"]

@@ -34,7 +34,7 @@ class LinebotController < ApplicationController
             push = "まだ連携が終わってないみたい＞＜\nログインして連携させてね！\nhttp://localhost:3000"
 
           elsif input == "とうろく"
-            push = "http://localhost:3000" 
+            push = "https://line-botkun.herokuapp.com"
     
           elsif topic.nil?
             push = input + "？\n『とうろく』で登録画面に飛べるよ！"
