@@ -11,13 +11,13 @@
       <p>ここから登録できるよ〜</p>
       <%= form_with scope: :topic, url: topics_path do |f| %>
 
-      <%= f.label :送信, for: 'send', class: 'rounded-pill p-2 send-label'%>
-      <%= f.text_field :send_message, id: 'send' %>
+      <%= f.label :送信, for: 'send', class: 'rounded-pill p-2 send-label form-1'%>
+      <%= f.text_field :send_message, id: 'send', class: 'form-1'%>
 
-      <%= f.label :受信, for: 'receive', class: 'rounded-pill p-2 receive-label'%>
-      <%= f.text_field :receive_message, id: 'receive' %>
+      <%= f.label :受信, for: 'receive', class: 'rounded-pill p-2 receive-label form-2'%>
+      <%= f.text_field :receive_message, id: 'receive', class: 'form-2'%>
 
-      <%= f.submit "登録！", class: 'sm-btn btn-outline-info' %>
+      <%= f.submit "登録！", class: 'btn btn-outline-info'%>
       <% end %>
     <div class="QR text-right">
       <div class="line-it-button" data-lang="ja" data-type="friend" data-lineid="@015gtvvt" style="display: none;"></div>
