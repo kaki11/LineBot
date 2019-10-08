@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Linebotくん
+アプリ内でメッセージを登録し、botと連携させると設定したメッセージが返ってきます。
+herokuにデプロイ中。 https://line-botkun.herokuapp.com/
 
-Things you may want to cover:
+## 使用技術
+* Ruby on Rails
+* Mysql
+* bootstrap４
+* LINE Messaging API
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## BD
