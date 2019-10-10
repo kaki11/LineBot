@@ -31,7 +31,7 @@ class LinebotController < ApplicationController
           topic = topics.find_by(send_message: input)
           
           if user.nil?
-            push = "まだ連携が終わってないみたい＞＜\nログインして連携させてね！\nhttp://localhost:3000"
+            push = "まだ連携が終わってないみたい＞＜\nログインして連携させてね！\nhttps://line-botkun.herokuapp.com"
 
           elsif input == "とうろく"
             push = "https://line-botkun.herokuapp.com"

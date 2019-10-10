@@ -4,8 +4,8 @@ class LineUsersController < ApplicationController
      #アクセストークンの取得
     uri = URI.parse('https://api.line.me/oauth2/v2.1/token')
     res = Net::HTTP.post_form(uri, { 
-      client_id: "1626757935",
-      client_secret: "03e565abb28e0fbbd5fe695eb1d2cca0",
+      client_id: ENV["LINE_CLIENT_ID"],
+      client_secret: ENV["LINE_CLIENT_SECRET"],
       code: params[:code],
       grant_type: "authorization_code",
       redirect_uri: "https://line-botkun.herokuapp.com/show"
