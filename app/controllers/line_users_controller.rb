@@ -8,7 +8,7 @@ class LineUsersController < ApplicationController
       client_secret: ENV["LINE_CLIENT_SECRET"],
       code: params[:code],
       grant_type: "authorization_code",
-      redirect_uri: "https://line-botkun.herokuapp.com/show"
+      redirect_uri: ENV["RIDIRECT_URI"]
     })
     result = JSON.parse(res.body)
     token = result["access_token"]

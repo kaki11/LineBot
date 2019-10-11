@@ -1,26 +1,26 @@
 <div class="add shadow p-3 mt-5">
-  <% if current_user.line_user.nil? %>
-    <p>最初にLineと連携させてね！</p>
-      <%= link_to "LINE", "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1626757935&redirect_uri=https://line-botkun.herokuapp.com/show&state=#{SecureRandom.hex(10)}&scope=profile%20openid",
-        class: "btn btn-outline-success mb-3" %>
+    <% if current_user.line_user.nil? %>
+      <p>最初にLineと連携させてね！</p>
+        <%= link_to "LINE", "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1626757935&redirect_uri=" + ENV["RIDIRECT_URI"] + "&state=#{SecureRandom.hex(10)}&scope=profile%20openid",
+          class: "btn btn-outline-success mb-3" %>
 
-  <% else %>
-    <p>ここから登録できるよ〜</p>
-    <%= form_with scope: :topic, url: topics_path do |f| %>
+    <% else %>
+      <p>ここから登録できるよ〜</p>
+      <%= form_with scope: :topic, url: topics_path do |f| %>
 
-    <%= f.label :送信, for: 'send', class: 'rounded-pill p-2 send-label form-1'%>
-    <%= f.text_field :send_message, id: 'send', class: 'form-1'%>
+      <%= f.label :送信, for: 'send', class: 'rounded-pill p-2 send-label form-1'%>
+      <%= f.text_field :send_message, id: 'send', class: 'form-1'%>
 
-    <%= f.label :受信, for: 'receive', class: 'rounded-pill p-2 receive-label form-2'%>
-    <%= f.text_field :receive_message, id: 'receive', class: 'form-2'%>
+      <%= f.label :受信, for: 'receive', class: 'rounded-pill p-2 receive-label form-2'%>
+      <%= f.text_field :receive_message, id: 'receive', class: 'form-2'%>
 
-    <%= f.submit "登録！", class: 'btn btn-outline-info'%>
+      <%= f.submit "登録！", class: 'btn btn-outline-info'%>
+      <% end %>
+    <div class="QR text-right">
+      <div class="line-it-button" data-lang="ja" data-type="friend" data-lineid="@015gtvvt" style="display: none;"></div>
+      <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+      <%= image_tag "linebotくん.png", size: '100x100' %>
+    </div>
+
     <% end %>
-  <div class="QR text-right">
-    <div class="line-it-button" data-lang="ja" data-type="friend" data-lineid="@015gtvvt" style="display: none;"></div>
-    <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-    <%= image_tag "linebotくん.png", size: '100x100' %>
   </div>
-
-  <% end %>
-</div>
