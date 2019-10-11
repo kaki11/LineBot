@@ -47,33 +47,3 @@ body {
 .receive-label {
   background:#cce5ff;
 }
-
-@media screen and (max-width: 767px) {
-  // 767px以下用（タブレット／スマートフォン用）
-
-  .form-1 {
-    display: block;
-  }
-  .form-2 {
-    display: block;
-  }
-  .top-hero-container {
-    overflow: hidden;
-
-  }
-  .line-bc {
-    float: left;
-  }
-  
-  .add {
-    width: 260px;
-    position: absolute;
-    left: 50px;
-  }
-
-  .list-title {
-    margin-top: 400px;
-  }
-
-  }
-  
