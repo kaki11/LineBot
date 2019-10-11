@@ -1,10 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic_id, only: [:edit, :update, :destroy]
   before_action :logged_in_user, only: [:create, :destroy]
-
-  def index
-    @topics = Topic.all
-  end
   
   def new
     @topic = Topic.new
