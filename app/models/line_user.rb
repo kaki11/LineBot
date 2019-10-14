@@ -13,7 +13,6 @@ class LineUser < ApplicationRecord
     })
     result = JSON.parse(res.body)
     token = result["access_token"]
-
   end
 
   def self.user_info(token)
@@ -22,11 +21,7 @@ class LineUser < ApplicationRecord
     http.use_ssl = uri2.scheme === "https"
     headers = { Authorization: "Bearer #{token}" }
     response = http.get(uri2.path, headers)
-
     user = JSON.parse(response.body)
-    user_line_id = user["userId"]
-    # user_line_name = user["displayName"]
-
   end
   
 end
