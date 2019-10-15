@@ -7,7 +7,6 @@ class LineUsersController < ApplicationController
     #ユーザー情報の取得
     user = LineUser.user_info(token)
     user_line_id = user["userId"]
-    user_line_name = user["displayName"]
 
     #ユーザーとline_uidを紐ずける
     if LineUser.find_by(line_id: user_line_id).nil?
