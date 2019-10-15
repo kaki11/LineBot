@@ -33,7 +33,7 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 3.0'
   gem 'rails-controller-testing', '1.0.2'
   gem 'minitest-reporters',       '1.1.14'
   gem 'guard',                    '2.13.0'
