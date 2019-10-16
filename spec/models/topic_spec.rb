@@ -1,5 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "送信、受信メッセージがあれば登録できる" do
+    expect(FactoryBot.create(:topic)).to be_valid
+  end
+
+  it "送信メッセージがなければ登録できない" do
+    expect(FactoryBot.build(:topic, send_message: "")).to_not be_valid
+  end
+
+  it "受信メッセージがなければ登録できない" do
+    expect(FactoryBot.build(:topic, receive_message: "")).to_not be_valid
+  end
+
+  it "150文字以上登録できない" do
+    topic = FactoryBot.build(:topic, send_message: "a"*150)
+    expect(topic).to_not be_valid
+    expect(topic.send_message.length).to be >= 150
+  end
+
 end
