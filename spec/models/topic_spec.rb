@@ -19,4 +19,10 @@ RSpec.describe Topic, type: :model do
     expect(topic.send_message.length).to be >= 150
   end
 
+  it "149文字だと登録できる" do
+    user = FactoryBot.create(:user)
+    topic = user.topics.build(send_message: "a"*149, receive_message: "a"*149)
+    expect(topic).to be_valid
+  end
+
 end
