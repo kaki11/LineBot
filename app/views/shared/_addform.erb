@@ -6,7 +6,7 @@
 
     <% else %>
       <p>ここから登録できるよ〜</p>
-      <%= form_with scope: :topic, url: topics_path do |f| %>
+      <%= form_with scope: :topic, url: topics_path, local: true do |f| %>
 
       <%= f.label :送信, for: 'send', class: 'rounded-pill p-2 send-label form-1'%>
       <%= f.text_field :send_message, id: 'send', class: 'form-1'%>

@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-offset-4 col-md-4">
         <h1 class="title">add</h1>
-        <%= form_with model: @topic, url: topics_path do |f| %>
+        <%= form_with model: @topic, url: topics_path, local: true do |f| %>
 
           <%= f.label :送信, for: 'send'%>
           <%= f.text_field :send_message, class: 'form-control form-group', id: 'send' %>
