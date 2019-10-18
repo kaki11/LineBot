@@ -1,20 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it "名前とメールアドレスとパスワードがあれば登録できる" do
-    expect(FactoryBot.create(:user)).to be_valid
-  end 
+  let(:user) { build(:user) }
+  let(:topic) { build(:topic) }
+  let(:line_user) { build(:line_user) }
 
-  it "名前がなければ登録できない" do
-    expect(FactoryBot.build(:user, name: "")).to_not be_valid
+  context "登録が成功する場合" do
+    it "名前とメールアドレスとパスワードがあれば登録できる" do
+      expect(user.errors.details).to be_empty
+      expect(create(:user)).to be_valid
+    end
+    it "正しく保存されている" do
+      expect(user.name).to eq("testuter")
+    end
   end
-
-  it "メールアドレスがなければ登録できない" do
-    expect(FactoryBot.build(:user, email: "")).to_not be_valid
+  
+  context "登録が失敗する場合" do
+    let(:user) { User.new(name: "") }
+    it "名前がないとき" do
+      expect(user).to_not be_valid
+      expect(user[:name]).to be_empty
+      expect(user.errors.details).to_not be_empty
+    end
   end
-
-  it "パスワードがなければ登録できない" do
-    expect(FactoryBot.build(:user, password_digest: "")).to_not be_valid
+  context "登録が失敗する場合" do
+    let(:user) { User.new(email: "") }
+    it "メールアドレスがないとき" do
+      expect(user).to_not be_valid
+      expect(user[:email]).to be_empty
+      expect(user.errors.details).to_not be_empty
+    end
   end
 
   it "メールアドレスが重複していたら登録できない" do
