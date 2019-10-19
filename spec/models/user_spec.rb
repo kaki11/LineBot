@@ -2,8 +2,6 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:user) { build(:user) }
-  let(:topic) { build(:topic) }
-  let(:line_user) { build(:line_user) }
 
   context "登録が成功する場合" do
     it "名前とメールアドレスとパスワードがあれば登録できる" do
@@ -32,18 +30,27 @@ RSpec.describe User, type: :model do
     end
   end
 
-  it "メールアドレスが重複していたら登録できない" do
-    user1 = FactoryBot.create(:user, name: "user1", email: "user1@example.com")
-    expect(FactoryBot.build(:user, name: "user2", email: user1.email)).to_not be_valid
+  context "登録が失敗する場合" do
+    let(:user) { User.create(email: "user1@example.com") }
+    it "メールアドレスが重複している" do
+      expect(User.new(email: user.email)).to_not be_valid
+      expect(user.errors.details).to_not be_empty
+    end
   end
 
-  it "パスワードが暗号化されているか" do
-    user = FactoryBot.create(:user)
-    expect(user.password_digest).to_not eq "password_digest"
+  context "登録が失敗する場合" do
+    let(:user) { User.create }
+    it "パスワードが暗号化されているか" do
+      expect(user.password_digest).to_not eq "password"
+    end
   end
 
-  it "パスワードと確認用パスワードが異なる場合保存できない" do 
-    expect(FactoryBot.build(:user, password:"password", password_digest: "passward")).to_not be_valid 
-  end 
- 
+  context "登録が失敗する場合" do
+    let(:user) { User.create(password: "password", password_confirmation: "passwoord") }
+    it "パスワードと確認用パスワードが異なる場合保存できない" do
+      expect(user).to_not be_valid 
+      expect(user.password).to_not eq "passwoord"
+    end
+  end
+
 end
