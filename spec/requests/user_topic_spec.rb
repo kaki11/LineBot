@@ -33,7 +33,6 @@ RSpec.describe "リクエストテスト", type: :request do
         get "/users/#{user.id}/edit"
         expect(response).to render_template(:edit)
       end
-
     end
   end
 
@@ -47,23 +46,5 @@ RSpec.describe "リクエストテスト", type: :request do
     it "edit（ログイン画面にとぶ）" do
       get "/users/#{user.id}/edit"
       expect(response).to redirect_to login_path
-    end
-  end
-
-  describe "トピックの作成" do
-    it "成功したとき" do
-    end
-
-    it "失敗したとき" do
-    end
-  end
-
-  describe "トピックの編集" do
-    it "update" do
-    end
-  end
-
-  describe "トピックの削除" do
-    it "delete" do
     end
   end
