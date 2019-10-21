@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :line_user do
-    user { nil }
-    line_id { "MyString" }
+    user_id { 1 }
+    line_id { "lineId" }
+    
+    user
   end
 end
