@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "リクエストテスト", type: :request do
+RSpec.describe User, type: :request do
   describe "ログインユーザーがいるとき" do
     let(:user) { create(:user) }
     let(:line_user) { create(:line_user, user: user) }
