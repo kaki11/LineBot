@@ -1,4 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe 'Lineログインのテスト', type: :request do
+RSpec.describe Linebot, type: :request do
+
 end
