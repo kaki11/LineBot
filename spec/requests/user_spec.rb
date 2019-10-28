@@ -4,7 +4,6 @@ RSpec.describe User, type: :request do
   describe "ログインユーザーがいるとき" do
     let(:user) { create(:user) }
     let(:line_user) { create(:line_user, user: user) }
-  end
 
     it "new" do
       get signup_path
@@ -48,3 +47,4 @@ RSpec.describe User, type: :request do
       expect(response).to redirect_to login_path
     end
   end
+end
