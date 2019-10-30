@@ -21,9 +21,15 @@ jobs:
       - image: circleci/mysql:5.7
 
     working_directory: ~/linebot
-      
+
     steps:
       - checkout
+
+      - run:
+          name: update bundler
+          command: |
+            gem update --system
+            gem install bundler
 
       # Download and cache dependencies
       - restore_cache:
@@ -33,9 +39,8 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+          name: Bundle Install
+          command: bundle check || bundle install
 
       - save_cache:
           paths:
@@ -69,8 +74,3 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-
-      # run rubocop
-      - run:
-          name: run rubocop
-          command: bundle exec rubocop
