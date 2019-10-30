@@ -15,7 +15,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
 end
 
 group :development do
@@ -42,6 +41,8 @@ group :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'rspec-rails'
+  gem "rspec_junit_formatter"
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
