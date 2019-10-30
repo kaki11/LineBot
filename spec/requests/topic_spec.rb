@@ -9,12 +9,12 @@ RSpec.describe TopicsController, type: :request do
           .to receive(:session).and_return(user_id: user.id)
       end
 
-      it 'リクエストが成功すること' do
+      xit 'リクエストが成功すること' do
         get user_path(user)
         expect(response.status).to eq 200
       end
 
-      it '投稿一覧が表示されていること' do
+      xit '投稿一覧が表示されていること' do
         get user_path(user)
         expect(response.body).to include "List"
       end
